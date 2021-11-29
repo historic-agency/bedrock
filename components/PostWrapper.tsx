@@ -18,7 +18,7 @@ const PostWrapper = ({ className, posts }: Props) => {
       {/* {posts.map((post: any, index: number) => (
         <li key={index}>{post.title}</li>
       ))} */}
-      Hello?????
+      Hello?
     </div>
   );
 };
