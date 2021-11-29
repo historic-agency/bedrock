@@ -1,4 +1,6 @@
 import { initPlasmicLoader } from "@plasmicapp/loader-nextjs";
+import PostCard from './components/PostCard';
+import PostWrapper from './components/PostWrapper';
 
 export const PLASMIC = initPlasmicLoader({
   projects: [
@@ -23,3 +25,17 @@ export const PLASMIC = initPlasmicLoader({
 // https://docs.plasmic.app/learn/app-hosting/#set-a-plasmic-project-to-use-your-app-host
 
 // PLASMIC.registerComponent(...);
+
+PLASMIC.registerComponent(PostCard, {
+  name: 'Post Card',
+  props: {
+    test: 'string',
+  }
+});
+
+PLASMIC.registerComponent(PostWrapper, {
+  name: 'Post Wrapper',
+  props: {
+    children: 'slot'
+  }
+});
