@@ -1,6 +1,6 @@
 import { initPlasmicLoader } from "@plasmicapp/loader-nextjs";
-import PostCard from './components/PostCard';
 import PostWrapper from './components/PostWrapper';
+import Test from './components/Test';
 
 export const PLASMIC = initPlasmicLoader({
   projects: [
@@ -14,7 +14,7 @@ export const PLASMIC = initPlasmicLoader({
   // For development, you can set preview to true, which will use the unpublished
   // project, allowing you to see your designs without publishing.  Please
   // only use this for development, as this is significantly slower.
-  preview: false,
+  preview: true,
 });
 
 // You can register any code components that you want to use here; see
@@ -26,16 +26,25 @@ export const PLASMIC = initPlasmicLoader({
 
 // PLASMIC.registerComponent(...);
 
-PLASMIC.registerComponent(PostCard, {
-  name: 'Post Card',
-  props: {
-    test: 'string',
-  }
-});
+// PLASMIC.registerComponent(PostCard, {
+//   name: 'Post Card',
+//   props: {
+//     test: 'string',
+//   }
+// });
 
-PLASMIC.registerComponent(PostWrapper, {
-  name: 'Post Wrapper',
+// PLASMIC.registerComponent(PostWrapper, {
+//   name: 'Post Wrapper',
+//   props: {
+//     name: 'string',
+//   },
+//   importPath: './components/PostWrapper',
+//   isDefaultExport: true,
+// });
+
+PLASMIC.registerComponent(Test, {
+  name: 'Test',
   props: {
-    children: 'slot'
+    name: 'string',
   }
 });

@@ -1,5 +1,5 @@
-// Import React
 import React from "react";
+
 import clsx from "clsx";
 
 interface Props {
@@ -9,32 +9,25 @@ interface Props {
   posts: any;
 }
 
-const PostWrapper = ({ className, posts }: Props) => {
+const PostWrapper = ({
+  className,
+  hello,
+}: {
+  className: string;
+  hello: string;
+}) => {
   // Modify classes
   const classes = clsx([className, "grid grid-cols-3"]);
 
-  return (
-    <div className={classes}>
-      {/* {posts.map((post: any, index: number) => (
-        <li key={index}>{post.title}</li>
-      ))} */}
-      Hello?
-    </div>
-  );
+  return <div className={classes}>Hello: {hello ?? "world"}</div>;
 };
 
-export async function getStaticProps({
-  postURL = "https://historicagency.com/wp-json/wp/v2/posts",
-}: Props) {
-  const res = await fetch(postURL);
-  console.log("hello");
-  const posts = await res.json();
-
-  return {
-    props: {
-      posts,
-    },
-  };
-}
+// export async function getStaticProps() {
+//   return {
+//     props: {
+//       hello: "Hello World",
+//     },
+//   };
+// }
 
 export default PostWrapper;
