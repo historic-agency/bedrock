@@ -47,9 +47,26 @@ export const getStaticProps: GetStaticProps = async (context) => {
 };
 
 export const getStaticPaths: GetStaticPaths = async () => {
-  const pageModules = await PLASMIC.fetchPages();
+  // @ts-ignore
+  Array.prototype.remove = function (key: string, value: string) {
+    const index = this.findIndex((obj) => obj[key] === value);
+    return index >= 0
+      ? [...this.slice(0, index), ...this.slice(index + 1)]
+      : this;
+  };
+  // Ignored paths
+  const ignorePaths = ["/posts"];
+  const pageModules: any = await PLASMIC.fetchPages().then((fetchedPages) => {
+    ignorePaths.forEach(
+      (path) =>
+        // @ts-ignore
+        (fetchedPages = fetchedPages.remove("path", path))
+    );
+    return fetchedPages;
+  });
+
   return {
-    paths: pageModules.map((mod) => ({
+    paths: pageModules.map((mod: any) => ({
       params: {
         catchall: mod.path.substring(1).split("/"),
       },

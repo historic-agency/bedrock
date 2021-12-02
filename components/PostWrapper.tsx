@@ -14,7 +14,6 @@ interface Props {
 }
 
 const PostWrapper = (props: Props) => {
-  console.log(props.blogPosts);
   return (
     <ul className={`${props.className} text-red-500`}>
       {props.blogPosts.map((post: any) => (
