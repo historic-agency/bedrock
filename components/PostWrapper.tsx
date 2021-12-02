@@ -1,25 +1,16 @@
-import React from "react";
-
-import clsx from "clsx";
+// import React from "react";
 
 interface Props {
   className: string;
-  children: JSX.Element;
-  postURL: string;
-  posts: any;
+  apiURL: string;
 }
 
-const PostWrapper = ({
-  className,
-  hello,
-}: {
-  className: string;
-  hello: string;
-}) => {
-  // Modify classes
-  const classes = clsx([className, "grid grid-cols-3"]);
-
-  return <div className={classes}>Hello: {hello ?? "world"}</div>;
+const PostWrapper = (props: Props) => {
+  return (
+    <div className={props.className}>
+      API URL: {props.apiURL ?? "https://google.com"}
+    </div>
+  );
 };
 
 // export async function getStaticProps() {

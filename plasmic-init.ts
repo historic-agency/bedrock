@@ -42,6 +42,13 @@ export const PLASMIC = initPlasmicLoader({
 //   isDefaultExport: true,
 // });
 
+PLASMIC.registerComponent(PostWrapper, {
+  name: "PostWrapper",
+  props: {
+    apiURL: 'string',
+  }
+})
+
 PLASMIC.registerComponent(Test, {
   name: 'Test',
   props: {
