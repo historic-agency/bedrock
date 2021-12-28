@@ -1,5 +1,6 @@
 import { initPlasmicLoader } from "@plasmicapp/loader-nextjs";
 import PostWrapper from './components/PostWrapper';
+import PostTitle from './components/PostTitle';
 import Test from './components/Test';
 
 export const PLASMIC = initPlasmicLoader({
@@ -49,9 +50,16 @@ PLASMIC.registerComponent(PostWrapper, {
   }
 })
 
-PLASMIC.registerComponent(Test, {
-  name: 'Test',
+PLASMIC.registerComponent(PostTitle, {
+  name: "PostTitle",
   props: {
-    name: 'string',
+    children: 'slot',
   }
-});
+})
+
+// PLASMIC.registerComponent(Test, {
+//   name: 'Test',
+//   props: {
+//     name: 'string',
+//   }
+// });

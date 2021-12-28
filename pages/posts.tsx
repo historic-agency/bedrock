@@ -6,6 +6,11 @@ import {
 } from "@plasmicapp/loader-nextjs";
 import { PLASMIC } from "../plasmic-init";
 
+interface Props {
+  plasmicData: ComponentRenderData;
+  posts: string;
+}
+
 // Statically fetch the data needed to render Plasmic pages or components.
 export const getStaticProps = async () => {
   // You can pass in multiple page paths or component names.
@@ -17,24 +22,21 @@ export const getStaticProps = async () => {
   return {
     props: {
       plasmicData,
-      blogPosts: posts,
+      posts: posts,
     },
     revalidate: 60,
   };
 };
 
 // Render the page or component from Plasmic.
-export default function MyPage(props: {
-  plasmicData: ComponentRenderData;
-  blogPosts: string;
-}) {
+export default function MyPage(props: Props) {
   return (
     <PlasmicRootProvider loader={PLASMIC} prefetchedData={props.plasmicData}>
       <PlasmicComponent
         component="/posts"
         componentProps={{
           postWrapper: {
-            blogPosts: props.blogPosts,
+            posts: props.posts,
           },
         }}
       />

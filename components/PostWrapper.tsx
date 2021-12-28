@@ -1,9 +1,9 @@
-import { GetServerSideProps } from "next";
+import Link from "next/link";
 
 interface Props {
   className: string;
   apiURL: string;
-  blogPosts: [
+  posts: [
     {
       id: number;
       title: {
@@ -13,12 +13,26 @@ interface Props {
   ];
 }
 
-const PostWrapper = (props: Props) => {
+const PostWrapper = ({ className, posts }: Props) => {
   return (
-    <ul className={`${props.className} text-red-500`}>
-      {props.blogPosts.map((post: any) => (
-        <li key={post?.id}>{post?.title.rendered}</li>
-      ))}
+    <ul className={`${className} grid grid-cols-3`}>
+      {posts ? (
+        posts.map((post: any) => (
+          <li key={post?.id}>
+            <h4>{post?.title.rendered}</h4>
+            <Link href={`posts/${post.id}`}>
+              <a>Read more</a>
+            </Link>
+          </li>
+        ))
+      ) : (
+        <li>
+          <h4>Test Post</h4>
+          <Link href="#">
+            <a>Read more</a>
+          </Link>
+        </li>
+      )}
     </ul>
   );
 };
